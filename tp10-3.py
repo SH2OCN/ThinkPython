@@ -47,7 +47,6 @@ def remove_duplicates_3(l):
     return sorted(set(l),key = l.index)
 
 #10-10
-import time
 def word_list1():
     fin = open('words.txt')
     t = []
@@ -60,11 +59,13 @@ def word_list2():
     for line in fin:
         t = t + [line.strip()]
     return t
-s = time.clock()
-time.sleep(6)
-e = time.clock()
-print e-s    
-
+   
+#10-11
+def bisect(t,word):
+    total = len(t)
+    index = total / 2
+    if word == t[index]:
+        return 
 
 
 
