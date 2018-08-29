@@ -61,11 +61,40 @@ def word_list2():
     return t
    
 #10-11
-def bisect(t,word):
-    total = len(t)
-    index = total / 2
+def bisect(t,word,small = 0,big = -100):
+    if big == -100:
+        big = len(t)-1
+    if big < small:
+        return False
+    index = (big - small) // 2 + small
     if word == t[index]:
-        return 
+        return index
+    elif word < t[index]:
+        return bisect(t,word,small,index-1)
+    elif word > t[index]:
+        return bisect(t,word,index+1,big)
+
+
+
+t = word_list1()
+import time
+word = 'zymurgy'
+t1 = time.clock()
+print(bisect(t,word))
+t2 = time.clock()
+print(t.find(word))
+t3 = time.clock()
+print('method1:',t2-t1)
+print('method2:',t3-t2)
+
+
+
+
+
+
+
+
+
 
 
 
