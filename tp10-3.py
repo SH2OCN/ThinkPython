@@ -66,7 +66,7 @@ def my_bisect(t,word,small = 0,big = -100):
         big = len(t)-1
     if big < small:
         return None
-    index = (big - small) // 2 + small
+    index = (big + small) // 2 
     if word == t[index]:
         return index
     elif word < t[index]:
@@ -75,9 +75,8 @@ def my_bisect(t,word,small = 0,big = -100):
         return my_bisect(t,word,index+1,big)
 
 
-
 t = word_list1()
-word = 'and'
+word = 'noise'
 print(my_bisect(t,word))
 
 
