@@ -4,13 +4,13 @@ Created on Tue Aug 28 14:13:30 2018
 Think Python Chapter 10 exercises
 @author: lenovo
 """
-
-from collections import Counter
 #10-6
 def is_sorted(l):
     return l == sorted(l)
     
 #10-7
+from collections import Counter
+
 def is_anagram(s,t):    
     return Counter(s)==Counter(t) if len(s)==len(t) else False
    
@@ -61,8 +61,8 @@ def word_list2():
     return t
    
 #10-11
-def my_bisect(t,word,small = 0,big = -100):
-    if big == -100:
+def my_bisect(t,word,small = 0,big = None):
+    if big == None:
         big = len(t)-1
     if big < small:
         return None
@@ -74,10 +74,35 @@ def my_bisect(t,word,small = 0,big = -100):
     elif word > t[index]:
         return my_bisect(t,word,index+1,big)
 
+#10-12
+def reverse_pair(t):
+    for word in t:
+        rev = word[::-1]
+        if my_bisect(t,rev):
+            print word,rev
+            
+#10-13
+def interlock(t,word):
+    '''check whether a word can be split into two interlocked words'''
+    evens = word[::2]
+    odds = word[1::2]
+    return my_bisect(t,evens) and my_bisect(t,odds)
 
-t = word_list1()
-word = 'noise'
-print(my_bisect(t,word))
+def interlock3(t,word,n=3):
+    '''三互锁'''
+    for i in range(n):
+        if not my_bisect(t,word[i::3]):
+            return False
+    return True
+
+
+
+if __name__ == '__main__':
+    print '---hello---'
+    t = word_list1()
+    for word in t:
+        if interlock3(t,word):
+            print word
 
 
 
