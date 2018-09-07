@@ -44,7 +44,7 @@ def histogram(string):
 def print_hist(h):
     t = h.keys()
     for k in t:
-        print k,h[k]
+        print (k,h[k])
     return None  
 #11-4
 def reverse_lookup(d,v):
@@ -63,18 +63,18 @@ def invert_dict(d):
             ans[d[k]].append(k)
     return ans
     
-def invert_dict2(d):
+def invert_dict2(d): #重点看
     ans = dict()
-    for k,v in d.iteritems():
+    for k,v in d.items():
         ans.setdefault(v,[]).append(k)
     return ans
 
     
 s = 'bananab'
 h = histogram(s)
-print h
-ans = invert_dict(h)
-print ans
+print (h)
+ans = invert_dict2(h)
+print (ans)
 
 
 
