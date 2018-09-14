@@ -79,7 +79,7 @@ def reverse_pair(t):
     for word in t:
         rev = word[::-1]
         if my_bisect(t,rev):
-            print word,rev
+            print(word,rev)
             
 #10-13
 def interlock(t,word):
@@ -98,11 +98,11 @@ def interlock3(t,word,n=3):
 
 
 if __name__ == '__main__':
-    print '---hello---'
+    print('---hello---')
     t = word_list1()
     for word in t:
         if interlock3(t,word):
-            print word
+            print(word)
 
 
 

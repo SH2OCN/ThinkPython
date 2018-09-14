@@ -7,6 +7,7 @@ Created on Sun Sep 02 19:47:50 2018
 """
 
 #11-1
+#from tp10_b import word_list1
 def make_dict():
     t = word_list1()
     mydict  = dict()
@@ -16,7 +17,7 @@ def make_dict():
     
 '''
 #三种方法的耗时对比：
-from tp10_b import word_list1, my_bisect
+from tp10_b import my_bisect
 import time
 t = word_list1()
 mydict = make_dict()
@@ -36,6 +37,7 @@ print t4 - t3
 
 #11-2
 def histogram(string):
+    '''统计string里每个字母出现的次数'''
     ans = dict()
     for letter in string:
         ans[letter] = ans.get(letter,0) + 1 #有，则把值加1；没有，则令值为1
@@ -64,18 +66,23 @@ def invert_dict(d):
     return ans
     
 def invert_dict2(d): #重点看
+    '''反转字典'''
     ans = dict()
     for k,v in d.items():
+        print(k,v)
         ans.setdefault(v,[]).append(k)
+        
     return ans
-
-    
-s = 'bananab'
-h = histogram(s)
-print (h)
-ans = invert_dict2(h)
-print (ans)
-
+#11-6
+k = {0:0,1:1}
+def fibonacci(n):
+    global k
+    if n in k:
+        return k[n]
+    else:
+        ans = fibonacci(n-1) + fibonacci(n-2)
+        k[n] = ans
+        return ans    
 
 
 
