@@ -7,7 +7,7 @@ Created on Sun Sep 02 19:47:50 2018
 """
 
 #11-1
-#from tp10_b import word_list1
+from tp10_b import word_list1
 def make_dict():
     t = word_list1()
     mydict  = dict()
@@ -83,6 +83,63 @@ def fibonacci(n):
         ans = fibonacci(n-1) + fibonacci(n-2)
         k[n] = ans
         return ans    
+#11-7
+memo = dict()
+def ack(m,n):
+    global memo
+    if (m,n) in memo:
+        return memo[(m,n)]
+    if m == 0:
+        ans = n+1
+        memo[(m,n)] = ans
+        return ans
+    elif m>0 and n==0:
+        ans = ack(m-1,1)
+        memo[(m,n)] = ans
+        return ans
+    elif m>0 and n>0:
+        ans = ack(m-1,ack(m,n-1))
+        memo[(m,n)] = ans
+        return ans
+#11-9
+def has_duplicates(l):
+    d = dict()
+    for i in l:
+        if i in d:
+            return True
+        else:
+            d[i] = 1
+    return False
+
+#11-10        
+def rotate_letter(l,n):
+    return chr((ord(l)-ord('a')+n)%26+ord('a'))
+
+def rotate_word(w,n):
+    ans = ''
+    for l in w:
+        ans = ans + rotate_letter(l,n)
+    return ans
+
+def rot_to_a(w):
+    '''把word移到以a开头'''
+    return rotate_word(w,ord('a')-ord(w[0]))
+
+
+def rotate_pairs(t):
+    d = dict()
+    for w in t:
+        rot = rot_to_a(w)
+        d.setdefault(rot,[]).append(w)
+    for v in d.values():
+        if len(v) > 1:
+            print(v)
+'''
+t = word_list1()            
+d = rotate_pairs(t)
+'''
+
+
 
 
 
